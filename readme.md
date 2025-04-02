@@ -1,8 +1,8 @@
 # Aula 01 - Instalando o JSON Server
 
-````markdown
 ## Passos para a instalação e uso:
 
+````markdown
 1. **Instale o JSON Server**
    Execute o seguinte comando no terminal:
    ```bash
@@ -50,11 +50,11 @@
 
 # Aula 02 - Criando uma API e testando no JSON Server
 
-````markdown
 ## Criando a API
 
 Para simular uma API com dados de produtos, utilize o JSON Server e crie um arquivo chamado `server.json` no diretório do seu projeto. Adicione o seguinte conteúdo no arquivo:
 
+````markdown
 ```json
 {
   "products": [
@@ -100,3 +100,47 @@ Para simular uma API com dados de produtos, utilize o JSON Server e crie um arqu
 ## Dica Extra
 
 Certifique-se de que o JSON Server esteja configurado corretamente no `package.json` para rodar sem problemas. Se precisar trocar a porta, adicione a opção `--port=<número_da_porta>` no script.
+
+# Aula 03 - Utilizando o `fetch`
+
+## Introdução
+
+Nesta aula, vamos aprender a utilizar o método `fetch()` para realizar requisições a uma API. O exemplo abaixo demonstra como buscar dados do endpoint de produtos criado nas aulas anteriores.
+
+---
+
+## Código de Exemplo
+
+````markdown
+```javascript
+fetch('<http://localhost:3333/products>')
+  .then((response) => response.json())
+  .then((data) => console.log(data));
+```
+````
+
+---
+
+## Explicação do Código
+
+1. **`fetch('<http://localhost:3333/products>')`:**
+
+   Inicia uma requisição HTTP GET para o endpoint da API de produtos (`http://localhost:3333/products`).
+
+2. **`then((response) => response.json())`:**
+
+   Quando a resposta é recebida, o método `.json()` converte os dados da resposta em um objeto JavaScript.
+
+3. **`then((data) => console.log(data))`:**
+
+   Exibe os dados recebidos no console, permitindo verificar o conteúdo retornado pela API.
+
+---
+
+## Como Testar o Código
+
+1. Certifique-se de que o JSON Server está rodando e acessível em `http://localhost:3333/products`.
+2. Copie o código para um arquivo `.js` ou diretamente em uma aplicação front-end.
+3. Abra o console do navegador (tecla F12) para visualizar os dados no terminal após a execução.
+
+---
