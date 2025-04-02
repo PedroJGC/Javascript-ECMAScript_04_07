@@ -143,4 +143,61 @@ fetch('<http://localhost:3333/products>')
 2. Copie o código para um arquivo `.js` ou diretamente em uma aplicação front-end.
 3. Abra o console do navegador (tecla F12) para visualizar os dados no terminal após a execução.
 
+# **Aula 04 - Utilizando `async/await`**
+
+````markdown
+### Código de Exemplo
+
+```javascript
+async function fetchProducts() {
+  const response = await fetch('<http://localhost:3333/products>');
+  const data = await response.json();
+  console.log(data);
+}
+```
+````
+
+### Explicação
+
+1. **`async function fetchProducts()`**: Define a função como assíncrona, permitindo o uso do `await`.
+2. **`await fetch('<http://localhost:3333/products>')`**: Faz a requisição para o endpoint da API e aguarda a resposta.
+3. **`response.json()`**: Converte a resposta em formato JSON para um objeto JavaScript.
+4. **`console.log(data)`**: Exibe os dados retornados no console.
+
+# **Aula 05 - Passando parâmetros na requisição**
+
+### Código de Exemplo
+
+```jsx
+async function fetchProductsById(id) {
+  const response = await fetch(`http://localhost:3333/products/${id}`);
+  const data = await response.json();
+  console.log(data);
+}
+
+fetchProductsById('3');
+```
+
+### Explicação
+
+1.  **`async function fetchProductsById(id)`**: Cria uma função assíncrona que recebe um parâmetro `id`.
+2.  **Interpolação de URL com Template String**:
+    Constrói a URL dinamicamente com base no `id` fornecido.
+    ```
+    `http://localhost:3333/products/${id}`
+
+        ```
+
+3.  **`response.json()`**: Transforma a resposta em um objeto JavaScript.
+4.  **`fetchProductsById('3')`**: Chama a função e passa o parâmetro `'3'`, buscando os dados do produto com o ID 3.
+5.  **`console.log(data)`**: Exibe o resultado no console.
+
+---
+
+### Testando os Códigos
+
+1. Certifique-se de que o servidor JSON Server está rodando na porta `3333`.
+2. Copie os códigos para arquivos `.js` ou diretamente em um aplicativo front-end.
+3. Abra o console do navegador para visualizar os resultados.
+
 ---
