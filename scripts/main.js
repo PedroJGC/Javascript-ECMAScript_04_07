@@ -1,3 +1,7 @@
 /* 
-    Aula 02 - Instalando uma versão específica
+    Aula 03 - Utilizando o fetch()
 */
+
+fetch('http://localhost:3333/products')
+  .then((response) => response.json())
+  .then((data) => console.log(data));
