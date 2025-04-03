@@ -183,10 +183,13 @@ fetchProductsById('3');
 1.  **`async function fetchProductsById(id)`**: Cria uma função assíncrona que recebe um parâmetro `id`.
 2.  **Interpolação de URL com Template String**:
     Constrói a URL dinamicamente com base no `id` fornecido.
-    ```
+
+    ````
     `http://localhost:3333/products/${id}`
 
         ```
+
+    ````
 
 3.  **`response.json()`**: Transforma a resposta em um objeto JavaScript.
 4.  **`fetchProductsById('3')`**: Chama a função e passa o parâmetro `'3'`, buscando os dados do produto com o ID 3.
@@ -199,5 +202,66 @@ fetchProductsById('3');
 1. Certifique-se de que o servidor JSON Server está rodando na porta `3333`.
 2. Copie os códigos para arquivos `.js` ou diretamente em um aplicativo front-end.
 3. Abra o console do navegador para visualizar os resultados.
+
+# Aula 06 - Fetch com método POST
+
+## Objetivo
+
+Nesta aula, vamos aprender como enviar dados para uma API utilizando o método POST com o `fetch`. Esse método é útil para criar ou salvar informações em um servidor.
+
+## Código de Exemplo
+
+```javascript
+const productName = document.getElementById('name');
+const productPrice = document.getElementById('price');
+const form = document.getElementsByTagName('form');
+
+addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  await fetch('<http://localhost:3333/products>', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id: new Date().getTime().toString(),
+      name: productName.value,
+      price: productPrice.value,
+    }),
+  });
+});
+```
+
+## Explicação do Código
+
+1. **Selecionando Elementos**:
+   - `document.getElementById('name')`: Obtém o valor do campo de entrada para o nome do produto.
+   - `document.getElementById('price')`: Obtém o valor do campo de entrada para o preço do produto.
+2. **Capturando o evento de envio**:
+   - `addEventListener('submit', async (event) => { ... })`: Escuta o evento de envio do formulário e impede o comportamento padrão com `event.preventDefault()`.
+3. **Realizando a requisição POST**:
+   - **URL:** `http://localhost:3333/products` é o endpoint para o qual os dados serão enviados.
+   - **Método:** `POST` define o tipo da requisição.
+   - **Cabeçalhos:** Informamos que o corpo da requisição será um objeto JSON com `'Content-Type': 'application/json'`.
+   - **Corpo:** Convertemos os valores do formulário para um objeto JSON usando `JSON.stringify()`.
+4. **Gerando um ID único**:
+   - `new Date().getTime().toString()`: Cria um ID único baseado no timestamp atual.
+
+## Como Testar
+
+1. Certifique-se de que o servidor JSON Server está rodando e que o endpoint `http://localhost:3333/products` está disponível.
+2. Inclua os campos de entrada no HTML:
+
+   ```html
+   <form>
+     <input type="text" id="name" placeholder="Nome do Produto" />
+     <input type="number" id="price" placeholder="Preço do Produto" />
+     <button type="submit">Enviar</button>
+   </form>
+   ```
+
+3. Salve o código JavaScript acima e conecte-o ao arquivo HTML.
+4. Abra o navegador, preencha o formulário e envie os dados. Confira o console ou a API para verificar os resultados.
 
 ---
